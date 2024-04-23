@@ -1,0 +1,137 @@
+/* 챗봇 전체 스타일 */
+.chatBot {
+
+  position: fixed;
+  right: 10px;
+  bottom: 15px;
+  z-index: 9998;
+}
+
+/* 챗봇 보이스 UI 스마일 스타일 */
+.offSmile {
+
+  background-image: url('https://beemil.site/images/samantha/smile.svg');
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  border-Radius: 50%;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  animation: siri-swing 1s linear infinite;
+  -webkit-animation: siri-swing 1s linear infinite; /* Safari and Chrome */
+  z-index: 9998;
+
+}
+
+@keyframes siri-swing {
+
+  0% {
+
+    transform: rotate(25deg);
+    animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    animation-duration: 0.5s;
+  }
+
+  50% {
+
+    transform: rotate(-25deg);
+    animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    animation-duration: 0.8s;
+  }
+
+  100% {
+
+    transform: rotate(25deg);
+    animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    animation-duration: 0.8s;
+  }
+}
+
+/* 챗봇 텍스트 UI 스마일 스타일 */
+.onSmile {
+
+  background-image: url('https://beemil.site/images/samantha/smile.svg');
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  border-Radius: 50%;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  animation: siri-rotate 1s linear infinite;
+  -webkit-animation: siri-rotate 1s linear infinite; /* Safari and Chrome */
+  z-index: 9998;
+}
+
+@keyframes siri-rotate {
+
+  0%  {
+
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    animation-duration: 0.5s;
+  }
+
+  50% {
+
+    transform: rotate(180deg);
+    animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    animation-duration: 0.8s;
+  }
+
+  100%{
+
+    transform: rotate(360deg);
+    animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    animation-duration: 0.8s;
+  }
+}
+
+.botShow {
+
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+  z-index: 9998;
+  transition: background-color 0.3s ease;
+}
+
+.botShow:hover {
+
+  background-color: #ffac33;
+  box-sizing: border-box;
+  border: 3px solid black;
+  cursor: pointer;
+}
+
+.pButtons {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  text-align: center;
+  line-height: 60px;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
+.pButtons:hover {
+  background-color: #ffac33;
+}
+
+.pButtons img {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+}

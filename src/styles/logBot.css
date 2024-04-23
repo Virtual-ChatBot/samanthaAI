@@ -1,0 +1,109 @@
+.chatLogUI {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 270px;
+  height: 400px;
+  background-color: #f9f9f9;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.2), -5px 0 5px -5px rgba(0, 0, 0, 0.2), 5px 0 5px -5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 9998;
+  margin-bottom: 115px;
+  margin-right: 50px;
+}
+
+.chatHeader {
+  background-color: #7ecaf6;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  z-index: 9998;
+}
+
+.chatHeaderFoot {
+  color: black;
+  font-size: 11px;
+  text-align: center;
+  z-index: 9998;
+}
+
+.chatBody {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  z-index: 9998;
+}
+
+.chatLog {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+  padding: 10px;
+  z-index: 9998;
+}
+
+.chatLog::-webkit-scrollbar {
+  width: 8px;  /* 스크롤바의 너비 */
+}
+
+.chatLog::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: #7ecaf6; /* 스크롤바의 색상 */
+  border-radius: 10px;
+}
+
+.chatLog::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+.chatInput {
+  display: flex;
+  align-items: center;
+  padding: 9px;
+  margin-bottom: 20px;
+  z-index: 9998;
+}
+
+.chatInput input[type="text"] {
+  padding: 9px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  z-index: 9998;
+}
+
+.chatInput button {
+  margin-right: 10px;
+  padding: 9px;
+  border-radius: 20px;
+  border: none;
+  background-color: #7ecaf6;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  z-index: 9998;
+}
+
+.userBubble {
+
+  align-self: flex-end;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  padding: 9px;
+  margin-bottom: 35px;
+  z-index: 9998;
+}
+
+.botBubble {
+  align-self: flex-start;
+  background-color: #E5E5EA;
+  border-radius: 10px;
+  padding: 9px;
+  margin-bottom: 35px;
+  z-index: 9998;
+}
+

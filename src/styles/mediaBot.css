@@ -1,0 +1,17 @@
+.welcomeButton {
+    margin-top: 10px;
+    border-radius: 15px;
+    width: 220px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    outline:none;
+    z-index: 9998;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.welcomeButton:hover {
+    background-color: #f2849e;
+    color: white;
+}
