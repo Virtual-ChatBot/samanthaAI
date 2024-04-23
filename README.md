@@ -3,6 +3,7 @@
 * This source is Samantha core source.
 * It is difficult for the general public to use this core source.
 * Please use Samantha V1 and Samantha V2.
+* We plan to upgrade using Naver HyperCLOVA X.
 
 ## Specifications
 * Project Type: React 18.2.0
