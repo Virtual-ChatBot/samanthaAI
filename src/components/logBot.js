@@ -142,7 +142,7 @@ function LogBot(props) {
         <div className="chatLogUI">
 
             <div className="chatHeader">SAMANTHA</div>
-            <div className="chatHeaderFoot">samantha V1 | powerpoopoo@naver.com</div>
+            <div className="chatHeaderFoot">samantha AI | powerpoopoo@naver.com</div>
 
             <div className="chatBody">
 
