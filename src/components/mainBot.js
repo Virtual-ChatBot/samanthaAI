@@ -51,10 +51,8 @@ function MainBot() {
 
 /////////////////////////////////스마일 애니메이션 클릭 시 웰컴 메시지 출력/////////////////////////////////
             fetch("https://beemil.site/bot/chat", {
-
                 method: "POST",
                 headers: {
-
                     "Content-Type": 'application/json'
                 },
                 body: "동영상 보여줘"
