@@ -1,6 +1,5 @@
 /* 챗봇 전체 스타일 */
 .chatBot {
-
   position: fixed;
   right: 10px;
   bottom: 15px;
@@ -9,7 +8,6 @@
 
 /* 챗봇 보이스 UI 스마일 스타일 */
 .offSmile {
-
   background-image: url('https://beemil.site/images/samantha/smile.svg');
   width: 50px;
   height: 50px;
@@ -25,23 +23,19 @@
 }
 
 @keyframes siri-swing {
-
   0% {
-
     transform: rotate(25deg);
     animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
     animation-duration: 0.5s;
   }
 
   50% {
-
     transform: rotate(-25deg);
     animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
     animation-duration: 0.8s;
   }
 
   100% {
-
     transform: rotate(25deg);
     animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
     animation-duration: 0.8s;
@@ -50,7 +44,6 @@
 
 /* 챗봇 텍스트 UI 스마일 스타일 */
 .onSmile {
-
   background-image: url('https://beemil.site/images/samantha/smile.svg');
   width: 50px;
   height: 50px;
@@ -65,23 +58,19 @@
 }
 
 @keyframes siri-rotate {
-
   0%  {
-
     transform: rotate(0deg);
     animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
     animation-duration: 0.5s;
   }
 
   50% {
-
     transform: rotate(180deg);
     animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
     animation-duration: 0.8s;
   }
 
   100%{
-
     transform: rotate(360deg);
     animation-timing-function: cubic-bezier(0.455, 0.030, 0.515, 0.955);
     animation-duration: 0.8s;
@@ -89,7 +78,6 @@
 }
 
 .botShow {
-
   width: 50px;
   height: 50px;
   background-color: #333;
@@ -104,7 +92,6 @@
 }
 
 .botShow:hover {
-
   background-color: #ffac33;
   box-sizing: border-box;
   border: 3px solid black;

@@ -4,7 +4,6 @@ import React, {useCallback, useEffect, useState} from "react";
 import LogBot from "./logBot";
 import MediaBot from "./mediaBot";
 import MikeBot from "./mikeBot";
-import VirtualBot from "./virtualBot"
 
 //CSS
 import '../styles/mainBot.css';
@@ -40,7 +39,6 @@ function MainBot() {
     //const [vTts, setVtts] = useState(null);
 
     function smileClick() {
-
         // 스마일 클릭 시 스마일 애니메이션 실행&멈춤
         setDisabled(!disabled);
 
@@ -48,7 +46,6 @@ function MainBot() {
         setShowLog(!showLog);
 
         if (welcomeButton.length === 0) {
-
 /////////////////////////////////스마일 애니메이션 클릭 시 웰컴 메시지 출력/////////////////////////////////
             fetch("https://beemil.site/bot/chat", {
                 method: "POST",
@@ -58,7 +55,6 @@ function MainBot() {
                 body: "동영상 보여줘"
             }).then((response) => response.json())
                 .then((data) => {
-
                     console.log(JSON.stringify(data));
 
                     // 챗봇 답변 파싱
@@ -74,24 +70,19 @@ function MainBot() {
 
                     //웰컴 버튼 생성 시작
                     const welcomeButtons = (bubble) => {
-
                         const buttons = bubble.data.contentTable?.flat() ?? [];
-
                         return buttons.filter((button) => button.data.type === "button")
                         .map((button, index) => {
-
                             const { title } = button.data;
                             const { url } = button.data.data.action.data;
 
                             return (
-
                                 <MediaBot key={index} url={url} title={title} />
                             );
                         });
                     };
 
                     const persistentButtons = () => {
-
                         const persistentMenu = data.persistentMenu?.data || {};
                         const contentTable = persistentMenu.contentTable || [];
 
@@ -103,14 +94,12 @@ function MainBot() {
                         };
 
                         return buttons.map((button, index) => {
-
                             const { url } = button.data.data.action.data;
                             const { iconUrl } = button.data.data;
                             const rowSpan = button.rowSpan;
                             const colSpan = button.colSpan;
 
                             return (
-
                                 <a key={index} href={url} onClick={() => handleClick(url)}>
                                     <span className={`pButtons rowSpan-${rowSpan} colSpan-${colSpan}`}>
                                         <img src={iconUrl} alt="Button Icon"/>
@@ -126,13 +115,10 @@ function MainBot() {
                         const pButtons = persistentButtons();
 
                         return (
-
                             <div className="welcome-message-container" key={index}>
-
                                 {text}
-
+                                {wButtons}
                                 <div className="button-container">
-                                    {wButtons}
                                     {pButtons}
                                 </div>
                             </div>
@@ -143,7 +129,6 @@ function MainBot() {
                     setWelcomeButton(arrayBotTexts => [...arrayBotTexts, ...welcomeMessages]);
 
                 }).catch((error) => {
-
                     console.log(error.message);
                 })
         }
@@ -151,16 +136,13 @@ function MainBot() {
 
 /////////////////////////////////마이크 버튼 클릭 시 챗봇 메시지 출력/////////////////////////////////
     function STT(STT) {
-
         //마이크 음성을 텍스트로 변환 시킨 데이터를 채팅 로그창에 출력하기 위해 발송
         setStt(STT)
 
         // 네이버 챗봇 AI 서비스😀😀😀
         fetch("https://beemil.site/bot/chat", {
-
             method: "POST",
             headers: {
-
                 "Content-Type": 'application/json',
             },
             body: STT
@@ -183,45 +165,34 @@ function MainBot() {
             const url = data.bubbles.map(url => url.data.url);
 
             if (url && url[0] && url[0].length !== 0) {
-
                 // 페이지 내비게이션 서비스😀😀😀
                 fetch("https://beemil.site/bot/navi", {
-
                     method: "POST",
                     headers: {
-
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({ url: url })
 
                 }).then((response) => {
-
                     if (response.ok) {
-
                         return response.json();
-
                     } else {
-
                         throw new Error("Error: " + response.status);
                     }
 
                 }).then((data) => {
-
                     console.log(data);
                     const url = data.url[0]; // 응답 데이터에서 첫 번째 URL 값을 추출
 
                     if (url) {
-
                         console.log(url);
                         window.location.href = url; // URL을 사용하여 페이지 이동
 
                     } else {
-
                         console.log("Error: Invalid URL received");
                     }
 
                 }).catch((error) => {
-
                     console.log(error.message);
                 });
             }
@@ -265,7 +236,6 @@ function MainBot() {
     }
 
     function VTT(VTT) {
-
         //입력 텍스트에 대한 챗봇 응답을 영상 출력으로 전송
         setVTEXT(VTT);
 
@@ -373,40 +343,27 @@ function MainBot() {
     }, []);
 
     useEffect(() => {
-
         window.addEventListener('keydown', handleKeyPress);
-
         return () => {
-
             window.removeEventListener('keydown', handleKeyPress);
         };
     }, [handleKeyPress]);
 
     return (
-
         <div className="chatBot">
-
             {!showLog && (
-
                 <div>
-                    {/* 음성챗봇 버튼 */}
+                    {/* 음성 챗봇 버튼 */}
                     <button className="botShow" onClick={smileClick}>음성챗봇</button>
                 </div>
             )}
 
             {showLog && (
-
                 <div>
                     {/* 음성 인식 버튼 */}
-                    <MikeBot STT={STT} />
+                    <MikeBot STT={STT}/>
                 </div>
             )}
-
-            <div hidden={!showLog}>
-
-                {/* 스테이블 디퓨전 */}
-                <VirtualBot VTEXT={VTEXT} BOText={BOText} welcomeText={welcomeText}/>
-            </div>
 
             <div>
                 {/* 스마일 애니메이션 버튼 */}
@@ -414,12 +371,11 @@ function MainBot() {
             </div>
 
             <div hidden={!showLog}>
-
                 {/* 채팅 로그창 */}
-                <LogBot stt={stt} BOText={BOText} welcomeButton={welcomeButton} VTT={VTT}/>
+                <LogBot stt={stt} BOText={BOText} welcomeButton={welcomeButton} VTT={VTT} welcomeText={welcomeText} VTEXT={VTEXT}/>
             </div>
-
         </div>
     );
 }
+
 export default MainBot;

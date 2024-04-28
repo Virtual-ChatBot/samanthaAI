@@ -8,38 +8,28 @@ import '../styles/mediaBot.css';
 Modal.setAppElement('#root');
 
 function MediaBot(props) {
-
     const [modalIsOpen, setModalIsOpen] = useState(false);
-
     const openModal = () => {
-
         setModalIsOpen(true);
     };
 
     const closeModal = () => {
-
         setModalIsOpen(false);
     };
 
     const handleVideoEnded = () => {
-
         closeModal();
     };
 
     return (
-
         <div>
             <button className="welcomeButton" onClick={openModal}>{props.title}</button>
-
             <Modal
-
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 shouldCloseOnOverlayClick={true}
                 style={{
-
                     overlay: {
-
                         backgroundColor: 'rgba(0, 0, 0, 0.5)',
                         zIndex: '9999'
                     },
@@ -61,7 +51,6 @@ function MediaBot(props) {
                 }}
             >
             <ReactPlayer
-
                 url={props.url}
                 playing={true}
                 controls={false}

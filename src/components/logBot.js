@@ -2,13 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 
 //CSS
 import '../styles/logBot.css';
+import VirtualBot from "./virtualBot";
 
 function LogBot(props) {
-
     const [text, setText] = useState([]);
-
     const [userText, setUserText] = useState([]);
-
     const [botText, setBotText] = useState([]);
 
     //스크롤 포커스
@@ -27,10 +25,8 @@ function LogBot(props) {
 
             // 네이버 챗봇 AI 서비스😀😀😀
             fetch("https://beemil.site/bot/chat", {
-
                 method: "POST",
                 headers: {
-
                     "Content-Type": 'application/json',
                 },
                 body: text[0],
@@ -54,10 +50,8 @@ function LogBot(props) {
                 if (url && url[0] && url[0].length !== 0) {
                 // 페이지 내비게이션 서비스😀😀😀
                     fetch("https://beemil.site/bot/navi", {
-
                         method: "POST",
                         headers: {
-
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify({ url: url })
@@ -68,9 +62,7 @@ function LogBot(props) {
                         } else {
                             throw new Error("Error: " + response.status);
                         }
-
                     }).then((data) => {
-
                         console.log(data);
                         const url = data.url[0]; // 응답 데이터에서 첫 번째 URL 값을 추출
 
@@ -82,7 +74,6 @@ function LogBot(props) {
                         }
 
                     }).catch((error) => {
-
                         console.log(error.message);
                     });
                 }
@@ -90,7 +81,6 @@ function LogBot(props) {
                 setBotText(arrayBotTexts => [...arrayBotTexts, ...parse]);
 
             }).catch((error) => {
-
                 console.log(error.message);
             })
 
@@ -104,69 +94,59 @@ function LogBot(props) {
     }
 
     useEffect(() => {
-
         if (props.stt) {
-
             setUserText(arrayUserTexts => [...arrayUserTexts, props.stt]);
         }
     }, [props.stt]);
 
     useEffect(() => {
-
         setUserText([null])
 
         if (props.welcomeButton) {
-
             setBotText((arrayBotTexts) => [...arrayBotTexts, props.welcomeButton]);
         }
     }, [props.welcomeButton]);
 
     useEffect(() => {
-
         if (props.BOText) {
-
             setBotText((arrayBotTexts) => [...arrayBotTexts, props.BOText]);
         }
     }, [props.BOText]);
 
     useEffect(() => {
-
         inputRef.current.focus();
-
         chatLogsRef.current.scrollTop = chatLogsRef.current.scrollHeight;
-
     },);
 
     return (
 
         <div className="chatLogUI">
+            <div className="chatHeader">
+                SAMANTHA
+            </div>
 
-            <div className="chatHeader">SAMANTHA</div>
-            <div className="chatHeaderFoot">samantha AI | powerpoopoo@naver.com</div>
+            <div className="chatHeaderFoot">
+                samantha AI | powerpoopoo@naver.com
+            </div>
 
             <div className="chatBody">
-
                 <div className="chatLog" ref={chatLogsRef}>
-
                     {userText && userText.map((text, index) => (
-
                         <React.Fragment key={index}>
-
                             {text && <div className='userBubble'>{text}</div>}
-                            {botText[index] && <div className='botBubble'>
-                                                    <div>
-                                                        <img src="https://beemil.site/images/samantha/smile.svg" alt="Samantha Logo" />
-                                                    </div>
-
-                                                    {botText[index]}
-                                               </div>
-                            }
+                                {botText[index] && (
+                                    <div className={index === 0 ? 'firstBotBubble' : 'botBubble'}>
+                                        <div>
+                                            <img src="https://beemil.site/images/samantha/smile.svg" alt="Samantha Logo"/>
+                                        </div>
+                                        {botText[index]}
+                                    </div>
+                                )}
                         </React.Fragment>
                     ))}
                 </div>
 
                 <div className="chatInput">
-
                     {/*ENTER 버튼*/}
                     <button onClick={handleClick}>ENTER</button>
 
@@ -174,8 +154,10 @@ function LogBot(props) {
                     <input onChange={(event) => setText([event.target.value])}
                            type="text" onKeyDown={handleClick} ref={inputRef} value={text} placeholder="질문을 입력해주세요."/>
                 </div>
+                <VirtualBot VTEXT={props.VTEXT} BOText={props.BOText} welcomeText={props.welcomeText}/>
             </div>
         </div>
     );
 }
+
 export default LogBot;
