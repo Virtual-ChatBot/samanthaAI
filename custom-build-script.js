@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+// js 파일이 복사될 경로
+const jsDestinationPath = path.resolve(__dirname, '..', '..', 'IdeaProjects', 'samanthaV2', 'src', 'main', 'resources', 'static', 'js');
 
 // 빌드가 될 js 파일의 경로
 const jsBuildPath = path.resolve(__dirname, 'build', 'static', 'js');
@@ -21,6 +23,8 @@ const jsNewFileNameWithPath = path.join(jsBuildPath, jsNewFileName);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
+// css 파일이 복사될 경로
+const cssDestinationPath = path.resolve(__dirname, '..', '..', 'IdeaProjects', 'samanthaV2', 'src', 'main', 'resources', 'static', 'css');
 
 // 빌드가 될 css 파일의 경로
 const cssBuildPath = path.resolve(__dirname, 'build', 'static', 'css');
@@ -63,7 +67,12 @@ try {
     const cssMapPath = path.join(cssBuildPath, `main.${cssRandomNumber}.css.map`);
     if (fs.existsSync(cssMapPath)) {
         fs.unlinkSync(cssMapPath);
+
+    // 파일 복사
+    fs.copyFileSync(jsNewFileNameWithPath, path.join(jsDestinationPath, jsNewFileName));
+    fs.copyFileSync(cssNewFileNameWithPath, path.join(cssDestinationPath, cssNewFileName));
+    console.log('빌드 파일 복사가 완료되었습니다.');
     }
 } catch (error) {
-    console.error('빌드 파일명 변경 중 오류가 발생했습니다.', error);
+    console.error('빌드 중 오류가 발생했습니다.', error);
 }
